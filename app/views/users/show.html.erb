@@ -25,17 +25,23 @@
 </ul>
 
 <h2> Video Requests </h2>
+<% if @user.inverse_videorequests.size > 0 %>
 <% @user.inverse_videorequests.each do |request| %>
 <ul>
   <li><%=request.user.email %> <%=link_to "Accept Video Request", {:controller => "videosessions", :action => "update", :persontwo_id => @user.id, :video_request_id => request.id, :user_id => request.user.id}, :method => :put %></li>
-  
+  <% end %>
   <% end %>
 </ul>
 
 <h2> Video Session </h2>
 <ul>
 <% @user.videosessions.each do |session| %>
-  <li><%=session.persontwo.email %><%=link_to "Watch Video Now!", "/videosessions/#{session.id}" %> </li>
+  <li><%=session.persontwo.email %></li>
+  <% if session.status == "pending"%>
+  <p> Invite Status: <%=session.status %></p>
+  <% else %>
+  <p><%=link_to "Watch Video Now!", "/videosessions/#{session.id}" %> </p>
+  <% end %>
   <% end %>
  
 </ul>
