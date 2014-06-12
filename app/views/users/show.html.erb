@@ -1,3 +1,41 @@
 <h1> Welcome to your profile page, <%=@user.email%> </h1>
 
+<h2> My Friends </h2>
+<ul>
+
+<% @user.friendships.each do |friendship| %>
+<li><%=friendship.friend.email %> <%=link_to "remove friend", "/friendships/#{friendship.id}", :method => :delete %> 
+ <%if !@user.usertwos.include?(friendship.friend)%>
+  <%=link_to "Send Video Request", videorequests_path(:usertwo_id => friendship.friend.id), :method => :post%></li>
+ <% end %>
+<% end %>
+</ul>
+
+
 <%=link_to "Show All Users", '/users' %>
+
+
+<h2> Friend Requests </h2> 
+<ul>
+  <% @user.inverse_invitations.each do |invites| %>
+  <%if !@user.friends.include?(invites) %>
+    <li><%=invites.email %> <%=link_to "Accept Friend Request",friendships_path(:friend_id => invites.id), :method => :post%> </li>
+  <% end %>
+  <% end %>
+</ul>
+
+<h2> Video Requests </h2>
+<% @user.inverse_videorequests.each do |request| %>
+<ul>
+  <li><%=request.user.email %> <%=link_to "Accept Video Request", {:controller => "videosessions", :action => "update", :persontwo_id => @user.id, :video_request_id => request.id, :user_id => request.user.id}, :method => :put %></li>
+  
+  <% end %>
+</ul>
+
+<h2> Video Session </h2>
+<ul>
+<% @user.inverse_videosessions.each do |session| %>
+  <li><%=session.user.email %><%=link_to "Watch Video Now!", "/videosessions/#{session.id}" %> </li>
+  <% end %>
+ 
+</ul>

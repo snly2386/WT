@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
-  resources :dashboard, only:[:index]
+  resources :users, only:[:show,:index]  
+  resources :friendships, only:[:create, :destroy]
+  resources :friendrequests, only:[:create, :destroy]
+  resources :videos, only:[:show, :index]
+  resources :videorequests, only:[:create, :destroy]
+  resources :videosessions, only:[:create, :update, :show, :destroy]
+  # post "videosessions/first_step" => "videosessions#make_first_step"
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

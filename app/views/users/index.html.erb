@@ -1,5 +1,12 @@
 <h1> All Users </h1> 
 
+
 <% @users.each do |user| %>
-  <div> <%= user.email %> <%=link_to 'Add Friend'%> </div>
+<% if user.email != current_user.email && !current_user.friends.include?(user) %>
+  <div> <%= user.email %> <%=link_to "Send Friend Request", friendrequests_path(:invitee_id => user.id), :method => :post %> </div>
   <% end %>
+  <% end %>
+
+
+
+  <%=link_to "Profile", "/users/#{current_user.id}" %>

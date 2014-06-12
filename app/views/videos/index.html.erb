@@ -1,0 +1,8 @@
+<h1> Choose a Video, <%= current_user.email %></h1>
+
+<ul>
+<% @videos.each do |video| %>
+<li><%=video.title%></li>
+<%=link_to(image_tag(video.thumbnail), videosessions_path(:video_id => video.id, :persontwo_id => @usertwo_id), :method => :post)%>
+<% end %>
+</ul>

@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610164557) do
+ActiveRecord::Schema.define(version: 20140612163502) do
+
+  create_table "friendrequests", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "invitee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "friendships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -30,5 +44,34 @@ ActiveRecord::Schema.define(version: 20140610164557) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "videorequests", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "usertwo_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "status"
+  end
+
+  create_table "videos", force: true do |t|
+    t.string   "youtube_id"
+    t.string   "genre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.string   "thumbnail"
+    t.string   "description"
+  end
+
+  create_table "videosessions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "persontwo_id"
+    t.string   "opentok_key"
+    t.string   "opentok_secret"
+    t.string   "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "video_id"
+  end
 
 end

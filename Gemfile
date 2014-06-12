@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'hirb'
 gem "twitter-bootstrap-rails"
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
