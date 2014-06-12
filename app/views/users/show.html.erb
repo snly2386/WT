@@ -34,8 +34,8 @@
 
 <h2> Video Session </h2>
 <ul>
-<% @user.inverse_videosessions.each do |session| %>
-  <li><%=session.user.email %><%=link_to "Watch Video Now!", "/videosessions/#{session.id}" %> </li>
+<% @user.videosessions.each do |session| %>
+  <li><%=session.persontwo.email %><%=link_to "Watch Video Now!", "/videosessions/#{session.id}" %> </li>
   <% end %>
  
 </ul>

@@ -3,4 +3,6 @@
 
 <iframe frameborder="0" height="100%" width="100%"style src="https://youtube.com/embed/<%=@youtube_id%>?autoplay=1&controls=0&showinfo=0&autohide=1&loop=1">
             </iframe>
+
+            <%=link_to "Close Video Session", {:controller => "videosession", :action => "destroy"}%>
         
