@@ -53,9 +53,16 @@ img{max-width:100%;}
 }
 /*---//ptsans_regular_macroman---*/
 /*----//End-iporting-fonts---*/
-body{
-	background:#FFFFFF;
-	 font-family: 'pt_sansregular';
+
+
+/* devise css */
+.emailin {
+	font-family: 'Rammetto One', cursive; ;
+	color: white;
+}
+
+.forgotpassword a{
+	color: white;
 }
 /*---start-wrap---*/
 .wrap{
@@ -72,7 +79,7 @@ body{
 .logo a{
 	color: #FFF;
 	font-size: 2em;
-	font-family: 'pt_sansbold';
+	font-family: 'Rammetto One', cursive;
 	text-shadow: 0px 1px 5px #635E5E;
 	-webkit-text-shadow: 0px 1px 5px #635E5E;
 	-moz-text-shadow: 0px 1px 5px #635E5E;
@@ -94,7 +101,7 @@ body{
 	background: url(/assets/image-sprite.png) no-repeat -3px -124px;
 }
 .top-bannar{
-	background: url(/assets/header-bg.jpg) no-repeat 0px 0px;
+	background: url(/assets/raging.jpg) no-repeat 0px 0px;
 	position: relative;
 	border-bottom: 5px solid #E8432E;
 	background-size: 100% 100%;
@@ -103,7 +110,7 @@ body{
 .header-welcome-note h2{
 	font-size: 3.5em;
 	color: #FFF;
-	font-family: 'pt_sansbold';
+	font-family: 'Rammetto One', cursive;;
 	width: 35%;
 	line-height: 1.2em;
 	margin: 2.5em 0 1em;
@@ -114,7 +121,7 @@ body{
 }
 .header-welcome-note a{
 	color: #fff;
-	font-family: 'pt_sansbold';
+	font-family: 'Rammetto One', cursive;;
 	font-size: 1.3em;
 	transition:0.5s all;
 	-webkit-transition:0.5s all;
@@ -173,7 +180,7 @@ a.boxclose{
 	display: block;
 	padding: 0.3em;
 	text-transform: uppercase;
-	font-family: 'pt_sansbold';
+	font-family: 'Rammetto One', cursive;
 	-webkit-transition: all 0.5s ease-in-out;
 	-moz-transition: all 0.5s ease-in-out;
 	-o-transition: all 0.5s ease-in-out;

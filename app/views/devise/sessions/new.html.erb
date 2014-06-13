@@ -1,17 +1,123 @@
-<h2>Sign in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+  
+       <script type = "text/javascript">
+         <%= render "home/jstuff/jquery.min.js" %>
+       </script>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+    <!----wrap---->
+    <div class="top-bannar" id="move-top">
+        <div class="top-header">
+          <div class="wrap"> 
+          <!---logo--->
+          <div class="logo">
+            <h1><a href="#">We.Video<span> </span> </a></h1>
+          </div>
+          <!---//logo--->
+          <!--top-nav---->
+          <div class="top-nav">
+            <div class="nav-icon">
+              <a href="#" class="right_bt" id="activator"><span> </span> </a>
+            </div>
+             <div class="box" id="box">
+               <div class="box_content">                                           
+                <div class="box_content_center">
+                  <div class="form_content">
+                    <div class="menu_box_list">
+                      <ul>
+                        <li><a href="/"><span>Home</span></a></li>
+                        <li><a href="#"><span>About</span></a></li>
+                        <li><a href="#"><span>Placeholder</span></a></li>
+                        <li><a href="#"><span>Placeholder</span></a></li>
+                        <li><a href="#"><span>Placeholder</span></a></li>
+                        <li><a href="#"><span>Contact</span></a></li>
+                        <div class="clear"> </div>
+                      </ul>
+                    </div>
+                    <a class="boxclose" id="boxclose"> <span> </span></a>
+                  </div>                                  
+                </div>  
+              </div> 
+            </div>          
+          </div>
+          <!---start-click-drop-down-menu----->
+              <!----start-dropdown--->
+               <script type="text/javascript">
+            var $ = jQuery.noConflict();
+              $(function() {
+                $('#activator').click(function(){
+                  $('#box').animate({'top':'0px'},900);
+                });
+                $('#boxclose').click(function(){
+                $('#box').animate({'top':'-1000px'},900);
+                });
+              });
+              $(document).ready(function(){
+              //Hide (Collapse) the toggle containers on load
+              $(".toggle_container").hide(); 
+              //Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
+              $(".trigger").click(function(){
+                $(this).toggleClass("active").next().slideToggle("slow");
+                  return false; //Prevent the browser jump to the link anchor
+              });
+                        
+            });
+          </script>
+          <!---//End-click-drop-down-menu----->
+          <!--top-nav---->
+          <div class="clear"> </div>
+         
+          <div class="header-welcome-note">
+            <h2>Sign in.</h2>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div><%= f.label :email, class: "emailin" %><br />
+              <%= f.email_field :email, autofocus: true %></div>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+              <div><%= f.label :password, class: "emailin" %><br />
+                <%= f.password_field :password, autocomplete: "off" %></div>
 
-<%= render "devise/shared/links" %>
+              <% if devise_mapping.rememberable? -%>
+                <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+              <% end -%>
+
+              <div><%= f.submit "Sign in" %></div>
+            <% end %>
+
+
+          </div>
+          <div class="forgotpassword">
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+        </div>
+    </div>
+    
+     
+              <script type="text/javascript">
+                  $(document).ready(function(){
+                  $('a[href^="#"]').on('click',function (e) {
+                      e.preventDefault();
+                      var target = this.hash,
+                      $target = $(target);
+                      $('html, body').stop().animate({
+                          'scrollTop': $target.offset().top
+                      }, 1000, 'swing', function () {
+                          window.location.hash = target;
+                      });
+                  });
+                });
+              </script>
+          <!---//smoth-scrlling---->
+    <!---//End-content--->
+    <!----//wrap---->
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
