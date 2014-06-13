@@ -356,26 +356,23 @@
     <!-- Start Main Paragraph -->
     <p class="main dark-gray" id="services">Accept an invitation to start watching a video with a friend!</p>
     <!-- Start Main Paragraph -->
-
+    <% if @user.inverse_videorequests.size > 0 %>
+    <% @user.inverse_videorequests.each do |request| %>
     <div class="servicesitem">
       <div class="front">
         <div data-icon="&#xe082;" class="icon"></div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><%=request.user.email %></p>
       </div>
       <div class="back">
-        <h3>Consulting</h3>
+        <h3><%=request.user.email %></h3>
+        <h3><%=link_to "Accept Video Request", {:controller => "videosessions", :action => "update", :persontwo_id => @user.id, :video_request_id => request.id, :user_id => request.user.id}, :method => :put %> </h3>
       </div>
     </div>
+    <% end %>
+    <% end %>
 
     <!-- bad code-->
-    <h2> Video Requests </h2>
-<% if @user.inverse_videorequests.size > 0 %>
-<% @user.inverse_videorequests.each do |request| %>
-<ul>
-  <li><%=request.user.email %> <%=link_to "Accept Video Request", {:controller => "videosessions", :action => "update", :persontwo_id => @user.id, :video_request_id => request.id, :user_id => request.user.id}, :method => :put %></li>
-  <% end %>
-  <% end %>
-</ul>
+
     <!--here -->
 
     <div class="servicesitem">
@@ -415,7 +412,7 @@
   
   <!-- Start Section Divider -->
   <div class="section divider">
-    <h2>Our Team</h2>
+    <h2>Video Sessions Initiated</h2>
     <a class="scroll" id="about"></a>
   </div>
   <!-- End Section Divider -->
@@ -424,28 +421,30 @@
   <div class="content">
 
     <!-- Start Main Paragraph -->
-    <p class="main dark-gray">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+    <p class="main dark-gray">Here are the video requests you sent to friends.  Wait for a status: "Watch Video Now!" to watch your video!</p>
     <!-- Start Main Paragraph -->
 
+
     <!-- Start Person Block -->
+    <% @user.videosessions.each do |session| %>
     <div class="person">
       <div class="image quotefade">
-        <img src="/assets/person.jpg">
+        <%=image_tag()
         <div class="quotehover">
-          <h5>“You have to do something you’ve never done 
-          to have something you’ve never had.”</h5>
-          <h6>Elizabeth Franklin</h6>
+          <h3><%=session.persontwo.email %></h3>
+           <% if session.status == "pending"%>
+          <h3>Invite Status: <%=session.status %></h3>
+          <% else %>
+          <h5><%=link_to "Watch Video Now!", "/videosessions/#{session.id}" %> </h5>
         </div>
       </div>
       <div class="info">
-        <h2>John Doe</h2>
-        <h4 class="light-gray">CEO</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h2><%=session.persontwo.email %></h2>
+        <h4 class="light-gray"></h4>
+        <h4>Title: </h4>
+        <h4>Description: </h4>
+        <h4>Genre: </h4>
+
         <a href="#" class="socialicon linkedin"></a>
         <a href="#" class="socialicon facebook"></a>
         <a href="#" class="socialicon twitter"></a>
@@ -455,6 +454,8 @@
     </div>
     <!-- Clear :) -->
     <div class="clear"></div>
+    <% end %>
+    <% end %>
     <!-- End Person Block -->
 
     <!-- Start Person Block -->
@@ -998,40 +999,12 @@
 </html>
 
 
-<h1> Welcome to your profile page, <%=@user.email%> </h1>
-
-<h2> My Friends </h2>
-<ul>
-
-<% @user.friendships.each do |friendship| %>
-<li><%=friendship.friend.email %> <%=link_to "remove friend", "/friendships/#{friendship.id}", :method => :delete %> 
- <%if !@user.usertwos.include?(friendship.friend)%>
-  <%=link_to "Send Video Request", videorequests_path(:usertwo_id => friendship.friend.id), :method => :post%></li>
- <% end %>
-<% end %>
-</ul>
 
 
 
 
 
-<h2> Friend Requests </h2> 
-<ul>
-  <% @user.inverse_invitations.each do |invites| %>
-  <%if !@user.friends.include?(invites) %>
-    <li><%=invites.email %> <%=link_to "Accept Friend Request",friendships_path(:friend_id => invites.id), :method => :post%> </li>
-  <% end %>
-  <% end %>
-</ul>
 
-<h2> Video Requests </h2>
-<% if @user.inverse_videorequests.size > 0 %>
-<% @user.inverse_videorequests.each do |request| %>
-<ul>
-  <li><%=request.user.email %> <%=link_to "Accept Video Request", {:controller => "videosessions", :action => "update", :persontwo_id => @user.id, :video_request_id => request.id, :user_id => request.user.id}, :method => :put %></li>
-  <% end %>
-  <% end %>
-</ul>
 
 <h2> Video Session </h2>
 <ul>
