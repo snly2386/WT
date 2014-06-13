@@ -5,4 +5,22 @@
             </iframe>
 
             <%=link_to "Close Video Session", {:controller => "videosessions", :action => "destroy"}, :method => :delete %>
+            <script src="http://code.jquery.com/jquery.js"></script>
+            <script src="//static.opentok.com/webrtc/v2.2/js/opentok.min.js" ></script>
+            <script type="text/javascript">
+           var apiKey    = "44841942";
+           var sessionId = "<%=@opentok_id %>";
+           var token     = "<%=@token %>";
+
+           var session = OT.initSession(apiKey, sessionId);
+
+           session.on("streamCreated", function(event) {
+             session.subscribe(event.stream);
+           });
+
+           session.connect(token, function(error) {
+             var publisher = OT.initPublisher();
+             session.publish(publisher);
+           });
+          </script>
         

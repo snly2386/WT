@@ -1,3 +1,5 @@
+require 'opentok'
+
 class VideosessionsController < ApplicationController
 
   def create
@@ -21,6 +23,14 @@ class VideosessionsController < ApplicationController
     @video_id = @videosession.video_id
     @video = Video.find(@video_id)
     @youtube_id = @video.youtube_id
+    @api_key = ' 44841942'
+    @api_secret = 'd8d004b87cbdaf0303aacf6c61aa5ddded15d5b5'
+    @opentok_sdk = OpenTok::OpenTok.new @api_key, @api_secret
+    @session = @opentok_sdk.create_session
+    
+    # @opentok_id = @session.session_id
+    @opentok_id = @session.session_id
+    @token = "T1==cGFydG5lcl9pZD00NDg0MTk0MiZzaWc9NzdlNmQ1OTBiZDNhMjNhNWM1NGFjMTcxMTg2N2FlNzUyYzg0N2NiOTpyb2xlPXN1YnNjcmliZXImc2Vzc2lvbl9pZD0xX01YNDBORGcwTVRrME1uNS1SbkpwSUVwMWJpQXhNeUF3TURvd01UbzFPU0JRUkZRZ01qQXhOSDR3TGpRMU5qazVOVGN6Zm40JmNyZWF0ZV90aW1lPTE0MDI2NDI5ODcmbm9uY2U9MC40NzQ3ODA5MzQwNjExMTg5JmV4cGlyZV90aW1lPTE0MDI2NDU0NjU="
   end
 
   def destroy
