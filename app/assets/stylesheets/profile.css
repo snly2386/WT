@@ -71,6 +71,10 @@ html, body {
 .remove {
 	color:white;
 }
+
+.acceptinv {
+	font-size: 20px;
+}
 /******************************************************************
 	Text Selection Styles
 ******************************************************************/
@@ -617,11 +621,12 @@ div.quotehover {
 	position: relative;
 	top: 0px;
 	left: 0px;
-	width: 340px;
-	height: 250px;
+	width: 300px;
+	height: 168px;
 	background-image: url(/assets/quotehover.png);
 	background-repeat: no-repeat;
 	background-color: rgba(96, 147, 231, 0.6);
+	background-size: 100%;
 }
 div.quotehover h5, div.quotehover h6 {
 	color: #FFF;

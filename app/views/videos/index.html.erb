@@ -1,8 +1,119 @@
-<h1> Choose a Video, <%= current_user.email %></h1>
 
-<ul>
-<% @videos.each do |video| %>
-<li><%=video.title%></li>
-<%=link_to(image_tag(video.thumbnail), videosessions_path(:video_id => video.id, :persontwo_id => @usertwo_id), :method => :post)%>
-<% end %>
-</ul>
+
+
+
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript">
+  <%= render "users/jstuff/jquery.jcarousel.js" %>
+  <%= render "users/jstuff/jquery.mixitup.min.js" %>
+  <%= render "users/jstuff/custom.js" %>
+</script>
+  <!-- Start Menu -->
+  <div class="menubar" data-scroll="true">
+    <a href="#" class="newlogo">WeVideo</a>
+    <ul class="mainmenu">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/users">All Users</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete  %></li>
+    </ul>
+  </div>
+  <!-- End Menu -->
+  
+  <!-- Start Home -->
+  <a class="scroll" id="home"></a>
+  <div class="home hero">
+    <div class="overlay"></div>
+    <div class="herowrapper">
+      <h1>WeVideo, for <b class="rotate color"> Videos,Music,Friends</b>.</h1>
+    </div>
+    <a href="javascript:void(0);" class="scrolldown">
+      <h3></h3>
+      <div data-icon="&#xe017;" class="icon"></div>
+    </a>
+  </div>
+  <!-- End Home -->
+
+  <!-- Start BlockQuote -->
+  <div class="blockquote_main">
+    <blockquote>Welcome <%=current_user.email %></blockquote>
+  </div>
+  <!-- End BlockQuote -->
+
+
+
+
+  <!-- Start Content -->
+  <div class="content">
+
+ 
+  <div class="section divider">
+    <h2 id="servicestitle">Choose a Video</h2>
+    <a class="scroll" id="portfolio"></a>
+  </div>
+  <!-- End Section Divider -->
+
+  <!-- Start Content -->
+
+  <!-- Start Main Paragraph -->
+  <p class="main dark-gray"></p>
+  <!-- Start Main Paragraph -->
+
+  <ul class="portfoliofilter">
+    <li class="filter active" data-filter="music comedy nature">All</li>
+      <li class="filter" data-filter="music">music</li>
+      <li class="filter" data-filter="comedy">comedy</li>
+      <li class="filter" data-filter="nature">nature</li>
+  </ul>
+
+  <div class="clear"></div>
+
+  <ul class="portfolio">
+    <% @videos.each do |video| %>
+    <li class= "item <%=video.genre%>">
+      <div class="portfolioitem">
+        <%=link_to(image_tag(video.thumbnail), videosessions_path(:video_id => video.id, :persontwo_id => @usertwo_id), :method => :post)%>
+        <div class="portfoliohover">
+          <div class="info">
+            <h1>+</h1>
+            <h5><%=link_to(video.title, videosessions_path(:video_id => video.id, :persontwo_id => @usertwo_id), :method => :post)%></h5>
+            <h6><%=video.description%></h6>
+          </div>
+        </div>
+      </div>
+    </li>
+    <% end %>
+
+    
+  </ul>
+
+  <!-- Clear :) -->
+  <div class="clear"></div>
+
+  </div>
+  <!-- End Content -->
+
+  
+</body>
+<!-- End Body -->
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
