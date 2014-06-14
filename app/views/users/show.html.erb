@@ -40,7 +40,17 @@
 
   <!-- Start BlockQuote -->
   <div class="blockquote_main">
-    <blockquote>Welcome <%=current_user.email %></blockquote>
+    <% if current_user.photo == nil%>
+    <blockquote>Welcome <%=current_user.name %>, Add an Image!
+    <%= form_tag "/users/upload", :method => :post, multipart: true do %>
+    <%= file_field_tag "photo" %>
+    <%= submit_tag("Upload")%>
+    <% end %>
+    </blockquote>
+    <% else %>
+
+    <blockquote>Welcome <%=current_user.name%> </blockquote>
+    <% end %>
   </div>
   <!-- End BlockQuote -->
 
@@ -57,7 +67,7 @@
         <!-- Start Single Block -->
         <li>
           <div class="section block"> 
-            <img src="/assets/placeholder_large1.jpg">
+           <%=image_tag(friendship.friend.photo)%>
             <div class="content">
               <h5><%=friendship.friend.email %></h5>
               <h6></h6>

@@ -1,3 +1,4 @@
+
 class UsersController < ApplicationController
   before_filter :authenticate_user!
   def show
@@ -6,6 +7,12 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+  end
+
+  def upload
+    current_user.photo = params[:photo].original_filename
+    current_user.save
+    redirect_to "/users/#{current_user.id}"
   end
 
   

@@ -1,12 +1,124 @@
-<h1> All Users </h1> 
-
-
-<% @users.each do |user| %>
-<% if user.email != current_user.email && !current_user.friends.include?(user) %>
-  <div> <%= user.email %> <%=link_to "Send Friend Request", friendrequests_path(:invitee_id => user.id), :method => :post %> </div>
-  <% end %>
-  <% end %>
 
 
 
-  <%=link_to "Profile", "/users/#{current_user.id}" %>
+
+
+
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript">
+  <%= render "users/jstuff/jquery.jcarousel.js" %>
+  <%= render "users/jstuff/jquery.mixitup.min.js" %>
+  <%= render "users/jstuff/custom.js" %>
+</script>
+  <!-- Start Menu -->
+  <div class="menubar" data-scroll="true">
+    <a href="#" class="newlogo">WeVideo</a>
+    <ul class="mainmenu">
+      <li class="active"><a href="/">Home</a></li>
+      <li><%=link_to "Profile", "/users/#{current_user.id}" %></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete  %></li>
+    </ul>
+  </div>
+  <!-- End Menu -->
+  
+  <!-- Start Home -->
+  <a class="scroll" id="home"></a>
+  <div class="home hero">
+    <div class="overlay"></div>
+    <div class="herowrapper">
+      <h1>WeVideo, for <b class="rotate color"> Videos,Music,Friends</b>.</h1>
+    </div>
+    <a href="javascript:void(0);" class="scrolldown">
+      <h3></h3>
+      <div data-icon="&#xe017;" class="icon"></div>
+    </a>
+  </div>
+  <!-- End Home -->
+
+  <!-- Start BlockQuote -->
+  <div class="blockquote_main">
+    <blockquote>All Users </blockquote>
+  </div>
+  
+
+  
+  <!-- Start Section Divider -->
+  <div class="section divider">
+    <h2>Users</h2>
+    <a class="scroll" id="about"></a>
+  </div>
+  <!-- End Section Divider -->
+
+ 
+  <!-- Start Content -->
+<div class="content">
+
+    <!-- Start Main Paragraph -->
+    <p class="main dark-gray"></p>
+    <!-- Start Main Paragraph -->
+    <% @users.each do |user| %>
+   
+    <!-- Start Person Block -->
+    <div class="person">
+      <div class="image quotefade">
+        <%=image_tag(user.photo) %>
+        <div class="quotehover">
+          <h5><%= user.email %></h5>
+           <% if user.email != current_user.email && !current_user.friends.include?(user) %>
+          <h6><%=link_to "Send Friend Request", friendrequests_path(:invitee_id => user.id), :method => :post %></h6>
+          <% end %>
+        </div>
+      </div>
+      <div class="info">
+        <h2><%= user.name %></h2>
+        <h4 class="light-gray"><%= user.email %></h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <a href="#" class="socialicon linkedin"></a>
+        <a href="#" class="socialicon facebook"></a>
+        <a href="#" class="socialicon twitter"></a>
+        <a href="#" class="socialicon dribbble"></a>
+        <a href="#" class="socialicon pinterest"></a>
+      </div>
+    </div>
+    <!-- Clear :) -->
+    <div class="clear"></div>
+    <!-- End Person Block -->
+     <% end %>
+    
+    
+    
+
+  </div>
+  <!-- End Content -->
+
+  
+</body>
+<!-- End Body -->
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

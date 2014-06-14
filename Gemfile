@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'pry-debugger'
 gem 'opentok'
 gem 'hirb'
 # gem "twitter-bootstrap-rails"

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :videos, only:[:show, :index]
   resources :videorequests, only:[:create, :destroy]
   resources :videosessions, only:[:create, :update, :show, :destroy]
+  post "users/upload" => "users#upload"
   # post "videosessions/first_step" => "videosessions#make_first_step"
   
 
