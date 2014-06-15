@@ -37,7 +37,7 @@ class VideosessionsController < ApplicationController
   def destroy
     @videosession = Videosession.find(params[:id])
     @videosession.destroy
-    flash[:notice] = "Removed Video Request"
+    flash[:destroysession] = "Ended Video Session"
     redirect_to "/users/#{current_user.id}"
   end
 end

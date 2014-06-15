@@ -45,6 +45,8 @@
       <h1> <%=flash[:removefriend] %></h1>
       <% elsif flash[:videorequest] %>
       <h1> <%=flash[:videorequest]%></h1>
+      <% elsif flash[:destroysession] %>
+      <h1> <%=flash[:destroysession] %> </h1>
       <% end %>
       <% if @user.inverse_videorequests.size > 0 %>
       <h1> YOU'VE BEEN INVITED TO WATCH A VIDEO!</h1>
