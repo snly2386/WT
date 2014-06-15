@@ -2,7 +2,7 @@ class VideorequestsController < ApplicationController
   def create
     @videorequest = current_user.videorequests.build(:usertwo_id => params[:usertwo_id])
     @videorequest.save
-    flash[:notice] = "Successfully Sent Video Request"
+    flash[:videorequest] = "Successfully Sent Video Request"
     redirect_to :controller => "videos", :action => "index", :usertwo_id => params[:usertwo_id]
   end
 

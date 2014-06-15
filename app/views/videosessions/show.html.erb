@@ -1,7 +1,14 @@
 
 
 
+ <style>
+      .OT_mirrored, .OT_root, .OT_publisher{
+      
+        bottom:200px;
+        z-index: 999;
+      }
 
+    </style>
 
 
 
@@ -26,12 +33,12 @@
   <!-- End Menu -->
  
   <!-- Start Home -->
-  <a class="scroll" id="home"></a>
+ 
   <div class="home hero">
   <iframe frameborder="0" height="100%" width="100%"style src="https://youtube.com/embed/<%=@youtube_id%>?autoplay=1&controls=0&showinfo=0&autohide=1&loop=1"></iframe>
-  <%=link_to "Close Video Session", {:controller => "videosessions", :action => "destroy"}, :method => :delete %>
-    <div class="overlay"></div>
+    
     <div class="herowrapper">
+  <%=link_to "Close Video Session", {:controller => "videosessions", :action => "destroy"}, :method => :delete, class: "closesession" %>
             <script src="http://code.jquery.com/jquery.js"></script>
             <script src="//static.opentok.com/webrtc/v2.2/js/opentok.min.js" ></script>
             <script type="text/javascript">
@@ -49,6 +56,9 @@
              var publisher = OT.initPublisher();
              session.publish(publisher);
            });
+          </script>
+          <script>
+
           </script>
         
       

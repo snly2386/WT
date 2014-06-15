@@ -5,7 +5,7 @@ class VideosessionsController < ApplicationController
   def create
     @videosession = current_user.videosessions.build(:video_id => params[:video_id], :persontwo_id => params[:persontwo_id], :status => "pending")
     @videosession.save
-    flash[:notice] = "Video Request Sent"
+    flash[:videosession] = "Video Request Sent"
     redirect_to "/users/#{current_user.id}"
   end
   def update
@@ -15,6 +15,7 @@ class VideosessionsController < ApplicationController
     @videosession = Videosession.find_by(:user_id => params[:user_id], :persontwo_id => current_user.id)
     @videosession.status = "Video Request Accepted"
     @videosession.save
+    flash[:accepted] = "You have accepted a Video Request!"
     redirect_to "/videosessions/#{@videosession.id}"
   end
 

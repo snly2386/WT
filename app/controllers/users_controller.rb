@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def upload
     current_user.photo = params[:photo].original_filename
     current_user.save
+    flash[:upload] = "Successfully Uploaded Image"
     redirect_to "/users/#{current_user.id}"
   end
 

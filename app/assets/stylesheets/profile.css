@@ -81,6 +81,54 @@ html, body {
 	width: 100%;
 	height:100px;
 }
+
+.uploadphoto {
+	
+	padding: 0;
+	opacity: ;
+	cursor: pointer;
+	position:  ;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+
+	
+}
+
+.up {
+	width: 30%;
+	margin : auto;
+	height: 70px;
+	border: 1px solid #6093e7;
+	position: relative;
+	overflow: hidden;
+	float: left;
+	margin-left: 200px;
+	height: 30px;
+}
+
+.st {
+	width: 30%;
+	float: left;
+	margin-left: 10px;
+	height:30px;
+}
+
+.stb {
+	height: 30px;
+	line-height:;
+
+}
+
+.acceptfriend {
+	color: white;
+	text-decoration: none;
+}
+
+.closesession {
+	font-size: 20px;
+	color: white;
+}
 /******************************************************************
 	Text Selection Styles
 ******************************************************************/
@@ -541,6 +589,17 @@ div.section.block .hover {
 	display: none;
 }
 div.section.block .hover.content {
+	width: 240px;
+	height: 182px;
+	position: relative;
+	display: block;
+	background-color: rgba(96, 147, 231, 0.6);
+	z-index: 10;
+	border-bottom: 3px solid #6093e7;
+	margin-top: 0px;
+	text-align: center;
+}
+.hoverscontent {
 	width: 220px;
 	height: 182px;
 	position: relative;
@@ -549,6 +608,7 @@ div.section.block .hover.content {
 	z-index: 10;
 	border-bottom: 3px solid #6093e7;
 	margin-top: 0px;
+	text-align: center;
 }
 div.section.block .hover.content h2 {
 	padding-top: 40px;

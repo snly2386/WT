@@ -29,7 +29,23 @@
   <div class="home hero">
     <div class="overlay"></div>
     <div class="herowrapper">
+
       <h1>WeVideo, for <b class="rotate color"> Videos,Music,Friends</b>.</h1>
+      <% if flash[:friend] %>
+      <h1> Friend Request Successfully Sent! </h1>
+      <% elsif flash[:notice] %>
+      <h1> Successfully Signed In!</h1>
+      <% elsif flash[:videosession] %>
+      <h1> <%= flash[:videosession] %> </h1>
+      <% elsif flash[:addfriend] %> 
+      <h1> <%=flash[:addfriend]%> </h1>
+      <% elsif flash[:upload] %>
+      <h1> <%= flash[:upload] %></h1>
+      <% elsif flash[:removefriend] %>
+      <h1> <%=flash[:removefriend] %></h1>
+      <% elsif flash[:videorequest] %>
+      <h1> <%=flash[:videorequest]%></h1>
+      <% end %>
       <% if @user.inverse_videorequests.size > 0 %>
       <h1> YOU'VE BEEN INVITED TO WATCH A VIDEO!</h1>
       <% end %>
@@ -46,8 +62,10 @@
     <% if current_user.photo == nil%>
     <blockquote>Welcome <%=current_user.name %>, Add an Image!
     <%= form_tag "/users/upload", :method => :post, multipart: true do %>
-    <%= file_field_tag "photo" %>
-    <%= submit_tag("Upload")%>
+    <div class="signbox">
+      <div class="up"><%= file_field_tag "photo", class: "uploadphoto" %></div>
+      <div class="st"><%= submit_tag("Upload", class: "stb") %>
+    </div>
     <% end %>
     </blockquote>
     <% else %>
@@ -77,7 +95,7 @@
             </div>
 
             <div class="hover">
-              <div class="hover content">
+              <div class="hoverscontent">
                 <h2>+</h2>
                 <%if !@user.usertwos.include?(friendship.friend)%>
                 <h5><%=friendship.friend.email %></h5>
@@ -111,7 +129,7 @@
         <%if !@user.friends.include?(invites) %>
         <li>
           <div class="section block blog active">
-            <img src="/assets/placeholder_large_blog2.jpg">
+           <%=image_tag(invites.photo)%>
             <div class="content">
               <h5><%=invites.email %></h5>
               <h6>Placeholder</h6>
@@ -120,7 +138,7 @@
               <div class="hover content">
                 <h2>+</h2>
                 <h5><%=invites.email %></h5>
-                <h6><%=link_to "Accept Friend Request",friendships_path(:friend_id => invites.id), :method => :post%></h6>
+                <h6 style="color:white"><%=link_to "Accept Friend Request",friendships_path(:friend_id => invites.id), :method => :post, class: "acceptfriend"%></h6>
               </div>
             </div>
           </div>
