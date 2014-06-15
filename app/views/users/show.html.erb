@@ -23,13 +23,16 @@
     </ul>
   </div>
   <!-- End Menu -->
-  
+ 
   <!-- Start Home -->
   <a class="scroll" id="home"></a>
   <div class="home hero">
     <div class="overlay"></div>
     <div class="herowrapper">
       <h1>WeVideo, for <b class="rotate color"> Videos,Music,Friends</b>.</h1>
+      <% if @user.inverse_videorequests.size > 0 %>
+      <h1> YOU'VE BEEN INVITED TO WATCH A VIDEO!</h1>
+      <% end %>
     </div>
     <a href="javascript:void(0);" class="scrolldown">
       <h3></h3>
@@ -158,10 +161,9 @@
         <p class="acceptinv"><%=request.user.email %></p>
       </div>
       <div class="back">
-        <h3></h3>
-        <h3><%=link_to "Accept Video", {:controller => "videosessions", :action => "update", :persontwo_id => @user.id, :video_request_id => request.id, :user_id => request.user.id}, :method => :put %> </h3>
+        <h3><%=link_to "Accept Video Request", {:controller => "videosessions", :action => "update", :persontwo_id => @user.id, :video_request_id => request.id, :user_id => request.user.id}, :method => :put %></h3>
       </div>
-    </div>
+      </div>
     <% end %>
     <% end %>
 

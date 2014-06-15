@@ -1,10 +1,37 @@
 
 
 
-<iframe frameborder="0" height="100%" width="100%"style src="https://youtube.com/embed/<%=@youtube_id%>?autoplay=1&controls=0&showinfo=0&autohide=1&loop=1">
-            </iframe>
 
-            <%=link_to "Close Video Session", {:controller => "videosessions", :action => "destroy"}, :method => :delete %>
+
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript">
+  <%= render "users/jstuff/jquery.jcarousel.js" %>
+  <%= render "users/jstuff/jquery.mixitup.min.js" %>
+  <%= render "users/jstuff/custom.js" %>
+</script>
+  <!-- Start Menu -->
+  <div class="menubar" data-scroll="true">
+    <a href="#" class="newlogo">WeVideo</a>
+    <ul class="mainmenu">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/users">All Users</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete  %></li>
+    </ul>
+  </div>
+  <!-- End Menu -->
+ 
+  <!-- Start Home -->
+  <a class="scroll" id="home"></a>
+  <div class="home hero">
+  <iframe frameborder="0" height="100%" width="100%"style src="https://youtube.com/embed/<%=@youtube_id%>?autoplay=1&controls=0&showinfo=0&autohide=1&loop=1"></iframe>
+  <%=link_to "Close Video Session", {:controller => "videosessions", :action => "destroy"}, :method => :delete %>
+    <div class="overlay"></div>
+    <div class="herowrapper">
             <script src="http://code.jquery.com/jquery.js"></script>
             <script src="//static.opentok.com/webrtc/v2.2/js/opentok.min.js" ></script>
             <script type="text/javascript">
@@ -24,3 +51,31 @@
            });
           </script>
         
+      
+      
+      
+    </div>
+    <a href="javascript:void(0);" class="scrolldown">
+      <h3></h3>
+     
+    </a>
+  </div>
+  <!-- End Home -->
+
+  
+
+  
+</body>
+<!-- End Body -->
+</html>
+
+
+
+
+
+
+
+
+
+
+
